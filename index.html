@@ -265,6 +265,7 @@ h1{font:700 clamp(1.6rem,3.4vw,2.3rem)/1.06 var(--sans);letter-spacing:-.03em;ma
   function codes(x){
     if(x.flag&&st.f==="kept")return '<span class="code">'+x.billed+'</span>';
     if(x.flag&&st.f==="held")return '<span class="code">'+x.billed+'</span>';
+    if(x.flag&&st.f==="open")return '<span class="code">'+x.billed+'</span>→<span class="code new">'+DRAFT+'</span>';
     return changed(x)?'<span class="code old">'+x.billed+'</span>→<span class="code new">'+suggested(x)+'</span>':'<span class="code">'+x.billed+'</span>';
   }
   function list(){
@@ -297,7 +298,7 @@ h1{font:700 clamp(1.6rem,3.4vw,2.3rem)/1.06 var(--sans);letter-spacing:-.03em;ma
   }
   function flagCard(){
     var x=F, h;
-    var draftLine='<p>Draft from total time: <b>'+ALL+'&nbsp;min</b>. '+DRAFT+' is '+rng(DRAFT)+'.</p>';
+    var draftLine='<p>Draft from total time: <b>'+ALL+'&nbsp;min</b>. '+DRAFT+' is '+rng(DRAFT)+'. Decision making is <b>'+x.mdm+'</b> ('+MDM[x.mdm]+'), so time is the only route to '+DRAFT+'.</p>';
     var rightLine='<p>'+ON+'&nbsp;min on '+DOS+' is '+RIGHT+' ('+rng(RIGHT)+'). Medical decision making <b>'+x.mdm+'</b> is also '+MDM[x.mdm]+'.</p>';
     if(st.f==="open"){
       h='<div class="card">'+head("CPT code autocorrect","Needs approval","")+'<div class="cb">'+who(x);
